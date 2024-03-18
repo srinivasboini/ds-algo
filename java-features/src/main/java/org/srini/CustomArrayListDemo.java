@@ -32,11 +32,13 @@ class CustomArrayList<E> implements CustomList<E>{
     @Override
     public void add(E e) {
 
+        elements[size++] = e;
+
         if(size == elements.length){
             increaseCapacity();
         }
 
-        elements[size++] = e;
+
     }
 
     private void increaseCapacity() {
