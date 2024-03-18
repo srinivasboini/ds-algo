@@ -6,8 +6,10 @@ public class CustomLinkedListDemo {
         CustomLinkedList<String> customLinkedList = new CustomLinkedList<>();
         customLinkedList.add("srinivas");
         customLinkedList.add("vas");
+        customLinkedList.add("boini");
 
         System.out.println(customLinkedList);
+        System.out.println(customLinkedList.get(2));
     }
 }
 
@@ -29,6 +31,25 @@ class CustomLinkedList<E> {
                 currentNode = currentNode.nextNode ;
             }
             currentNode.nextNode = new Node<>(data) ;
+        }
+
+
+    }
+
+    E get(int index){
+        Node<E> current = this.head;
+        for(int i=0; i< index; i++){
+            current = current.nextNode ;
+        }
+        return current.getData();
+    }
+
+    void remove(int index){
+        Node<E> current = this.head;
+        Node<E> previous = null ;
+        for(int i=0; i< index; i++){
+            previous = current;
+            current = current.nextNode ;
         }
 
 
