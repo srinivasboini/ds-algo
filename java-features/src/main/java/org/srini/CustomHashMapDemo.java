@@ -9,12 +9,13 @@ public class CustomHashMapDemo {
     public static void main(String[] args) {
         CustomHashMap<String, String> customHashMap = new CustomHashMap<>();
 
+        // Add elements to the CustomHashMap with key-value pairs.
         customHashMap.put("Hi", "how");
         customHashMap.put("Hello", "Im good");
-        customHashMap.put("demo", "demo") ;
-        System.out.println(customHashMap);
-        customHashMap.remove("demo");
-        System.out.println(customHashMap);
+        customHashMap.put("demo", "demo") ; // add a new key-value pair
+        System.out.println(customHashMap); // print the current state of the CustomHashMap
+        customHashMap.remove("demo"); // remove the specified key from the CustomHashMap
+        System.out.println(customHashMap); // print the updated state of the CustomHashMap after removing a key-value pair
 
         IntStream.range(0,20).mapToObj(i -> "demo"+i).forEach(e -> customHashMap.put(e,e));
         System.out.println(customHashMap);

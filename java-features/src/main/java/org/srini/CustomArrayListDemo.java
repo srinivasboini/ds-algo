@@ -5,6 +5,10 @@ import java.util.Arrays;
 public class CustomArrayListDemo {
 
     public static void main(String[] args) {
+
+        String str = "srinivvas";
+        System.out.println(str.replaceAll(".", "*"));
+
         CustomArrayList<String> list = new CustomArrayList<>();
 
         list.add("srini");
