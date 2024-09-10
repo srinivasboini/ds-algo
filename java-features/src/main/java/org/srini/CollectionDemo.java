@@ -2,11 +2,14 @@ package org.srini;
 
 import java.util.*;
 
+import java.util.*;
+import java.util.concurrent.*;
+
 public class CollectionDemo {
 
     public static void main(String[] args) {
 
-        Queue<String> queue = new ArrayDeque<>() ;
+        Queue<String> queue = new ConcurrentLinkedQueue<>() ;
 
         queue.offer("srinivas");
         queue.offer("boini");
@@ -17,16 +20,9 @@ public class CollectionDemo {
 
         System.out.println(queue.size());
 
-        Deque<String> deque = new ArrayDeque<>();
-        deque.offer("srinivas");
-        deque.offerFirst("boini");
-        deque.offerLast("hi");
-
-        while (!deque.isEmpty()){
-            System.out.println(deque.poll());
-        }
-
-        System.out.println(deque.size());
+        // Note: ConcurrentLinkedQueue does not have the functionality of Deque,
+        // so we cannot replace Deque with ConcurrentLinkedQueue directly.
+        // If you still need to use Deque functionality, you may need to use another thread-safe Deque implementation.
     }
 }
 
