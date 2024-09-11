@@ -22,6 +22,7 @@ public class MaxSumSubArray {
     public static void main(String[] args) {
         MaxSumSubArray sumSubArray = new MaxSumSubArray();
         sumSubArray.maxSum(3, new int[]{100, 200, 300, 400, 500});
+        sumSubArray.maxSumBF(new int[]{100, 200, 300, 400, 500}, 3);
 
     }
 
@@ -45,6 +46,24 @@ public class MaxSumSubArray {
 
         System.out.println("max sum of k elements "+maxSum);
         return maxSum;
+
+    }
+
+    //arr[] = {100, 200, 300, 400}   //k 2
+    public void maxSumBF(int[] n, int k){
+        int size = n.length;
+        int max = Integer.MIN_VALUE;
+
+        for(int i=0; i<= size-k; i++ ){
+            int sum = n[i];
+
+            for(int j=1; j<k; j++){
+                sum += n[i+j];
+            }
+            max = Math.max(max, sum);
+        }
+
+        System.out.println("maximum : "+max);
 
     }
 }

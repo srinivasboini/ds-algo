@@ -45,8 +45,8 @@ public class DistinctElementsInWindow {
         //process the remaining windows
         for(int i=1; i<=size-k; i++ ){ // size-k the outer bound
             //remove the previous one and add the next element
-            map.merge(arr[i-1], -1, Integer::sum);
-            map.merge(arr[i+k-1], 1, Integer::sum);
+            map.merge(arr[i-1], -1, Integer::sum);//remove previous
+            map.merge(arr[i+k-1], 1, Integer::sum);//add next one
             map.entrySet().removeIf(entry -> entry.getValue() == 0);
             result[i] = map.size();
         }
