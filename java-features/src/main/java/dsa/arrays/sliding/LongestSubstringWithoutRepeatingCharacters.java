@@ -33,36 +33,68 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     public static void main(String[] args) {
 
-        System.out.println(lengthOfLongestSubstring("abcccaa"));
+        //System.out.println(lengthOfLongestSubstring("abcccaa"));
+        LongestSubstringWithoutRepeatingCharacters l = new LongestSubstringWithoutRepeatingCharacters();
+        System.out.println(l.lengthOfLongestSubstringRev2("abcabcbb"));
+        System.out.println(l.lengthOfLongestSubstringRev2("bbbb"));
     }
 
-    private static int lengthOfLongestSubstring(String s) {
-        int length = s.length();
+//    private static int lengthOfLongestSubstring(String s) {
+//        int length = s.length();
+//
+//        int ans =0;
+//        int start = 0;
+//        int end = 0;
+//
+//        Set<Character> chars = new HashSet<>();
+//
+//        while(start < length && end < length){
+//
+//            //get the current character
+//            Character currentChar = s.charAt(end);
+//
+//            if(chars.contains(currentChar)){
+//                chars.remove(s.charAt(start));
+//                start++;
+//            }else{
+//                chars.add(currentChar);
+//                end++;
+//                ans = Math.max(ans, end - start); //update the max length
+//
+//            }
+//
+//        }
+//
+//        return ans;
+//    }
 
-        int ans =0;
-        int start = 0;
-        int end = 0;
+    //"abcccaa"
+    public int lengthOfLongestSubstringRev2(String input){
+        int maxLen = Integer.MIN_VALUE;
+        int size = input.length();
+        int start=0, end = 0;
+        int len = 0;
 
-        Set<Character> chars = new HashSet<>();
+        Set<Character> set = new HashSet<>();
+        while(end < size){
+            char currentChar = input.charAt(end);
 
-        while(start < length && end < length){
-
-            //get the current character
-            Character currentChar = s.charAt(end);
-
-            if(chars.contains(currentChar)){
-                chars.remove(s.charAt(start));
-                start++;
-            }else{
-                chars.add(currentChar);
-                end++;
-                ans = Math.max(ans, end - start); //update the max length
-
+            if(set.contains(currentChar)){
+                while(start < end && set.contains(currentChar)){
+                    char charFromStart = input.charAt(start++);
+                    set.remove(charFromStart);
+                }
             }
 
+            set.add(currentChar);
+            len = end - start + 1 ;
+            maxLen = Math.max(maxLen, len);
+            end ++ ;
         }
 
-        return ans;
+        return maxLen == Integer.MIN_VALUE ? -1 : maxLen;
+
+
     }
 
 }
